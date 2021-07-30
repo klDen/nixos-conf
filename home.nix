@@ -201,7 +201,7 @@ rec {
         }
         {
           delay = 10;
-          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; i3lock-fancy -gp -- scrot -z -o";
+          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; ${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp -- scrot -z -o";
         }
         {
           delay = 3600;
