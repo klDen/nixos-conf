@@ -191,20 +191,17 @@ rec {
   services = {
     xidlehook = {
       enable = true;
-      environment = {
-        "primary-display" = "$(xrandr | awk '/ primary/{print $1}')";
-      };
       not-when-audio = true;
       not-when-fullscreen = true;
       timers = [
         {
           delay = 60;
-          command = "redshift -o -l 45.53:-73.59 -b 0.1:0.1";
+          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 0.1:0.1";
           canceller = "redshift -o -l 45.53:-73.59 -b 1:1";
         }
         {
           delay = 10;
-          command = "redshift -o -l 45.53:-73.59 -b 1:1; i3lock-fancy -gp -- scrot -z -o";
+          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; i3lock-fancy -gp -- scrot -z -o";
         }
         {
           delay = 3600;
