@@ -88,28 +88,5 @@
     options = "--delete-older-than 30d";
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment = {
-    variables = {
-      JDK_HOME = "/etc/jdk11/lib/openjdk/";
-      JAVA_HOME = "/etc/jdk11/lib/openjdk/";
-    }; 
-
-    # IntelliJ
-    etc.jdk11 = with pkgs; {
-        source = jdk11;
-    };
-
-    systemPackages = (with pkgs; [
-      jetbrains.idea-community
-      (jetbrains.pycharm-community.override { 
-        jdk = pkgs.jdk11;
-      })
-      texlive.combined.scheme-full kile
-      #calibre 
-    ]);
-  };
-
   services.xserver.videoDrivers = [ "nvidia" ];
 }
