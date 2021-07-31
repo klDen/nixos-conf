@@ -195,13 +195,13 @@ rec {
       not-when-fullscreen = true;
       timers = [
         {
-          delay = 60;
+          delay = 120;
           command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 0.1:0.1";
-          canceller = "redshift -o -l 45.53:-73.59 -b 1:1";
+          canceller = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1";
         }
         {
           delay = 10;
-          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; ${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp -- scrot -z -o";
+          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; ${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp -- ${pkgs.scrot}/bin/scrot -z -o";
         }
         {
           delay = 3600;
