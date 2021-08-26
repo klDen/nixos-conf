@@ -133,7 +133,7 @@ rec {
               rate = "59.97";
             };
           };
-          #hooks.postswitch = "xrandr --output DP-0 --scale 2x2";
+          hooks.postswitch = "xrandr --output DP-0 --scale 2x2";
         };
         "x1e3-undocked" = {
           fingerprint = {
