@@ -144,8 +144,8 @@ rec {
               enable = true;
               primary = true;
               position = "0x0";
-              mode = "1920x1080";
-              #mode = "3840x2160";
+              #mode = "1920x1080";
+              mode = "3840x2160";
               rate = "60";
             };
           };
