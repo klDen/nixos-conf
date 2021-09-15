@@ -92,29 +92,6 @@
     options = "--delete-older-than 30d";
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment = {
-    systemPackages = (with pkgs; [
-      globalprotect-openconnect 
-      vault terraform_0_13 
-      poetry 
-      google-cloud-sdk 
-      zoom-us
-      python3Full
-      jetbrains.idea-ultimate
-      jetbrains.datagrip
-      jetbrains.goland
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
-    ]);
-  };
-
-  services.globalprotect = {
-    enable = true;
-    # if you need a Host Integrity Protection report
-    csdWrapper = "${pkgs.openconnect}/libexec/openconnect/hipreport.sh";
-  };
   services.xserver.libinput.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.screenSection = ''

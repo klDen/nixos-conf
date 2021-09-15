@@ -46,16 +46,31 @@
       };
     in
     {
-      nixosConfigurations.desktop = mkHomeMachine
-        ./hosts/desktop.nix
-        [
-          ./features/virtualbox.nix
-          ./features/adb.nix
-          ./features/jetbrains/community/intellij.nix
-        ];
-      nixosConfigurations.x1e3 = mkHomeMachine
-        ./hosts/x1e3.nix
-        [
-        ];
+      nixosConfigurations = {
+        desktop = mkHomeMachine
+          ./hosts/desktop.nix
+          [
+            ./features/virtualbox.nix
+            ./features/adb.nix
+            ./features/jetbrains/community/intellij.nix
+          ];
+        x1e3 = mkHomeMachine
+          ./hosts/x1e3.nix
+          [
+            ./features/globalprotect.nix
+            ./features/google-cloud.nix
+            ./features/poetry.nix
+            ./features/python.nix
+            ./features/terraform.nix
+            ./features/vault.nix
+            ./features/zoom.nix
+
+            ./features/jetbrains/enterprise/intellij.nix
+            ./features/jetbrains/enterprise/datagrip.nix
+            ./features/jetbrains/enterprise/pycharm.nix
+            ./features/jetbrains/enterprise/webstorm.nix
+            ./features/jetbrains/enterprise/goland.nix
+          ];
+      };
     };
 }
