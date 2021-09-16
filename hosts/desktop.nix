@@ -25,15 +25,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/99562496-cdc0-49fe-815f-0bd057449b11"; }
     ];
-
-  nix.maxJobs = lib.mkDefault 16;
-
-  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
-
-  nixpkgs.config.allowUnfree = true;
 
   nix = {
     package = pkgs.nixFlakes;
@@ -45,48 +41,5 @@
 
   networking.hostName = "desktop";
  
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    loader = {
-      timeout = 10;
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        version = 2;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = true;
-      };
-    };
-    
-    cleanTmpDir = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    extraUsers.klden = {
-      extraGroups = [ "wheel" "video" "audio" "disk" ];
-      group = "users";
-      isNormalUser = true;
-      uid = 1000;
-      shell = pkgs.zsh;
-    };
-
-    users.klden.subUidRanges = [{ startUid = 10000; count = 65536; }];
-    users.klden.subGidRanges = [{ startGid = 10000; count = 65536; }];
-    users.root.initialHashedPassword = "";
-  };
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-  
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
   services.xserver.videoDrivers = [ "nvidia" ];
 }

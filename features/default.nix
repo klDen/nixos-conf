@@ -1,11 +1,56 @@
 { pkgs, ... }: {
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users = {
+    extraUsers.klden = {
+      extraGroups = [ "wheel" "video" "audio" "disk" ];
+      group = "users";
+      isNormalUser = true;
+      uid = 1000;
+      shell = pkgs.zsh;
+    };
+
+    users.klden.subUidRanges = [{ startUid = 10000; count = 65536; }];
+    users.klden.subGidRanges = [{ startGid = 10000; count = 65536; }];
+    users.root.initialHashedPassword = "";
+  };
+
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
+  
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # Use the systemd-boot EFI boot loader.
+  boot = {
+    loader = {
+      timeout = 10;
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        version = 2;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+      };
+    };
+    
+    cleanTmpDir = true;
+  };
+
   i18n = {
     extraLocaleSettings = {
       LC_MESSAGES = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   environment = {
     systemPackages = (with pkgs; [

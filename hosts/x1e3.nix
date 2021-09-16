@@ -21,11 +21,14 @@
       fsType = "vfat";
     };
 
+  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/f7ededc4-e61a-4cab-a92a-0788b9338b57"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 
@@ -33,10 +36,6 @@
     device = "/dev/nvme0n1p2";
     preLVM = true;
   };
-
-  nix.maxJobs = lib.mkDefault 16;
-
-  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -50,66 +49,30 @@
 
   networking.hostName = "x1e3";
  
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    loader = {
-      timeout = 10;
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        version = 2;
-        devices = [ "nodev" ];
-        efiSupport = true;
-      };
+  services = {
+    xserver = {
+      libinput.enable = true;
+      videoDrivers = [ "nvidia" ];
+      screenSection = ''
+        Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+        Option         "AllowIndirectGLXProtocol" "off"
+        Option         "TripleBuffer" "on"
+      '';
     };
-    
-    cleanTmpDir = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    extraUsers.klden = {
-      extraGroups = [ "wheel" "video" "audio" "disk" ];
-      group = "users";
-      isNormalUser = true;
-      uid = 1000;
-      shell = pkgs.zsh;
+  hardware = {
+    nvidia.prime = {
+      sync.enable = true;
+
+      # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+      nvidiaBusId = "PCI:1:0:0";
+
+      # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+      intelBusId = "PCI:0:2:0";
     };
 
-    users.klden.subUidRanges = [{ startUid = 10000; count = 65536; }];
-    users.klden.subGidRanges = [{ startGid = 10000; count = 65536; }];
-    users.root.initialHashedPassword = "";
+    # x1e3 has a different output name for some reasons 
+    pulseaudio.extraConfig = "set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo";
   };
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-  
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
-  services.xserver.libinput.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.screenSection = ''
-    Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-    Option         "AllowIndirectGLXProtocol" "off"
-    Option         "TripleBuffer" "on"
-  '';
-
-  hardware.nvidia.prime = {
-    sync.enable = true;
-
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
-
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
-  };
-
-  # x1e3 has a different output name for some reasons 
-  hardware.pulseaudio.extraConfig = "set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo";
 }
