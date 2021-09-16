@@ -10,6 +10,10 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  # required to detect udev hotplug events
+  boot.extraModprobeConfig = ''
+    options nvidia-drm modeset=1
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/fcf811f8-ba4b-449c-a669-b310c2fc1c62";

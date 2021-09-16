@@ -31,6 +31,7 @@
           ./features/default.nix
           ./features/light.nix
           ./features/latex.nix
+          ./features/adb.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
@@ -51,7 +52,6 @@
           ./hosts/desktop.nix
           [
             ./features/virtualbox.nix
-            ./features/adb.nix
             ./features/jetbrains/community/intellij.nix
           ];
         x1e3 = mkHomeMachine

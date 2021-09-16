@@ -70,10 +70,18 @@
 
   services = {
     pcscd.enable = true;
-    udev.packages = with pkgs; [
-      yubikey-personalization
-      android-udev-rules
-    ];
+
+    udev = {
+      # autoswitch to proper autorandr display profile
+      extraRules = ''
+        ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c 'sleep 1 && ${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
+      '';
+
+      packages = with pkgs; [
+        yubikey-personalization
+        android-udev-rules
+      ];
+    };
 
     # Enable CUPS to print documents.
     #printing.enable = true;

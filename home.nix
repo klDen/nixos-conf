@@ -126,6 +126,7 @@ rec {
           config = {
             eDP-1-1.enable = false;
             DP-0 = {
+              crtc = 2; # changed to 2 somehow...
               enable = true;
               primary = true;
               position = "0x0";
