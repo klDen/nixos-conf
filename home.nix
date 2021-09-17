@@ -11,10 +11,19 @@ rec {
   home.homeDirectory = "/home/klden";
 
   home.packages = with pkgs; [
-    procs # no more: ps -ef | grep 
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode arandr autocutsel
     ripgrep-all fd sd procs bandwhich
     signal-desktop
+    vlc
+    chromium
+    pcmanfm xournalpp zathura
+    libreoffice
+    docker-compose
+    volumeicon cmst pavucontrol
+    scrot
+    libsForQt5.ark
+    yubikey-personalization yubikey-manager-qt pinentry-gtk2
+    #scrcpy
   ];
 
   programs = {

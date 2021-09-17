@@ -32,6 +32,7 @@
           ./features/light.nix
           ./features/latex.nix
           ./features/adb.nix
+          ./features/slack.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager

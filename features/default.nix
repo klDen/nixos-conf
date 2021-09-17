@@ -52,22 +52,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment = {
-    systemPackages = (with pkgs; [
-      vlc
-      yubikey-personalization yubikey-manager-qt pinentry-gtk2
-      volumeicon cmst pavucontrol
-      libreoffice 
-      pcmanfm xournalpp zathura
-      chromium
-      libsForQt5.ark
-      docker-compose
-      scrot
-      slack
-      #scrcpy
-    ]);
-  };
-
   services = {
     pcscd.enable = true;
 
