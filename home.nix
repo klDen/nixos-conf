@@ -22,7 +22,8 @@ rec {
     volumeicon cmst pavucontrol
     scrot
     libsForQt5.ark
-    yubikey-personalization yubikey-manager-qt pinentry-gtk2
+    yubikey-personalization yubikey-manager-qt
+    texlive.combined.scheme-full kile
     #scrcpy
   ];
 
@@ -76,8 +77,8 @@ rec {
       initExtra = ''
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
-        gpg-connect-agent /bye
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        #gpg-connect-agent /bye
+        #export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
         if [[ $DISPLAY ]]; then
           # If not running interactively, don't do anything
@@ -96,9 +97,11 @@ rec {
           fi
         fi
       '';
-      prezto.enable = true;
-      prezto.tmux.autoStartLocal = true;
-      prezto.prompt.theme = "walters";
+      prezto = {
+        enable = true;
+        tmux.autoStartLocal = true;
+        prompt.theme = "walters";
+      };
     };
 
     vim = {
@@ -222,6 +225,24 @@ rec {
 
     caffeine.enable = true;
     flameshot.enable = true;
+
+    redshift = {
+      enable = true;
+      tray = true;
+      latitude = 45.53;
+      longitude = -73.59;
+      provider = "manual";
+      temperature = {
+        day = 4000;
+        night = 1900;
+      };
+    };
+
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
+      pinentryFlavor = "gtk2";
+    };
   };
 
   # This value determines the Home Manager release that your

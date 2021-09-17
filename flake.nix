@@ -21,17 +21,13 @@
           configurationNix
 
           # Features common to all of my machines
-          ./features/current-location.nix
-          ./features/gnupg.nix
-          ./features/docker.nix
-          ./features/fonts.nix
-          ./features/redshift.nix
-          ./features/connman-iwd.nix
-          ./features/i3
           ./features/default.nix
+          ./features/i3
+          ./features/fonts.nix
+          ./features/connman-iwd.nix
           ./features/light.nix
-          ./features/latex.nix
           ./features/adb.nix
+          ./features/docker.nix
           ./features/slack.nix
 
           # home-manager configuration

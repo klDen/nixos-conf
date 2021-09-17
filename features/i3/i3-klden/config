@@ -197,15 +197,15 @@ bindsym $mod+x [urgent=latest] focus
 
 exec --no-startup-id autocutsel -fork -selection PRIMARY
 exec --no-startup-id autocutsel -fork -selection CLIPBOARD
+exec --no-startup-id autorandr --change --default default
 
-exec --no-startup-id exec signal-desktop --start-in-tray
-exec --no-startup-id exec slack -u
-exec --no-startup-id exec firefox
-exec --no-startup-id exec urxvt
-exec --no-startup-id exec volumeicon
+exec --no-startup-id volumeicon
 exec --no-startup-id cmst -m
-exec --no-startup-id redshift-gtk
-exec --no-startup-id flameshot
+
+exec --no-startup-id signal-desktop --start-in-tray
+exec --no-startup-id slack -u
+exec --no-startup-id firefox
+exec --no-startup-id urxvt
 
 for_window [class="Signal"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [class="Slack"] move --no-auto-back-and-forth to workspace 1, layout default 
