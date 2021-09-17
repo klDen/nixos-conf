@@ -23,7 +23,6 @@
           # Features common to all of my machines
           ./features/default.nix
           ./features/i3
-          ./features/fonts.nix
           ./features/connman-iwd.nix
           ./features/light.nix
           ./features/adb.nix
