@@ -4,3 +4,6 @@ This repository contains the Nix / NixOS configuration for all of my systems. St
 
 - `flake.nix`: Install things I need natively on NixOS desktop & laptop computers
 
+Installation of NixOS with LUKS
+
+https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134
