@@ -195,18 +195,6 @@ bindsym Print exec --no-startup-id flameshot gui
 # Jump to urgent window
 bindsym $mod+x [urgent=latest] focus
 
-exec --no-startup-id autocutsel -fork -selection PRIMARY
-exec --no-startup-id autocutsel -fork -selection CLIPBOARD
-exec --no-startup-id autorandr --change --default default
-
-exec --no-startup-id volumeicon
-exec --no-startup-id cmst -m
-
-exec --no-startup-id signal-desktop --start-in-tray
-exec --no-startup-id slack -u
-exec --no-startup-id firefox
-exec --no-startup-id urxvt
-
 for_window [class="Signal"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [class="Slack"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [class="Firefox"] move --no-auto-back-and-forth to workspace 2, layout tabbed, focus
@@ -223,3 +211,16 @@ set $monitor_right DP-1-2
 
 workspace 2 output $monitor_left
 workspace 3 output $monitor_right
+
+exec --no-startup-id volumeicon
+exec --no-startup-id cmst -m
+
+exec --no-startup-id signal-desktop --start-in-tray
+exec --no-startup-id slack -u
+exec --no-startup-id firefox
+exec --no-startup-id urxvt
+
+exec --no-startup-id autocutsel -fork -selection PRIMARY
+exec --no-startup-id autocutsel -fork -selection CLIPBOARD
+exec --no-startup-id autorandr --change --default default
+
