@@ -143,12 +143,15 @@ rec {
             HDMI-0 = {
               enable = true;
               primary = true;
-              position = "0x0";
               mode = "3440x1440";
-              rate = "59.97";
+              transform = [
+                [2.000000 0.000000 0.000000]
+                [0.000000 2.000000 0.000000]
+                [0.000000 0.000000 1.000000]
+              ];
             };
           };
-          hooks.postswitch = "xrandr --output HDMI-0 --scale 2x2";
+          hooks.preswitch = "xrandr --output eDP-1-1 --off";
         };
         "default" = {
           fingerprint = {
@@ -158,10 +161,8 @@ rec {
             eDP-1-1 = {
               enable = true;
               primary = true;
-              position = "0x0";
               #mode = "1920x1080";
               mode = "3840x2160";
-              rate = "60";
             };
           };
         };

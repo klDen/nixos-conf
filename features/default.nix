@@ -58,7 +58,7 @@
     udev = {
       # autoswitch to proper autorandr display profile
       extraRules = ''
-        ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c 'sleep 1 && ${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
+        ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c '${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
       '';
 
       packages = with pkgs; [
