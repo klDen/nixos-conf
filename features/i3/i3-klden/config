@@ -197,6 +197,7 @@ bindsym $mod+x [urgent=latest] focus
 
 for_window [class="Signal"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [class="Slack"] move --no-auto-back-and-forth to workspace 1, layout default 
+for_window [class="zoom"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [class="Firefox"] move --no-auto-back-and-forth to workspace 2, layout tabbed, focus
 for_window [class="URxvt"] move --no-auto-back-and-forth to workspace 3, layout tabbed
 for_window [class="jetbrains-idea"] move --no-auto-back-and-forth to workspace 3, layout tabbed
