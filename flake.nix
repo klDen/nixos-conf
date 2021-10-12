@@ -2,9 +2,8 @@
   description = "klden's NixOS config";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -22,7 +21,8 @@
 
           # Features common to all of my machines
           ./features/default.nix
-          ./features/i3
+          #./features/i3
+          ./features/sway
           ./features/connman-iwd.nix
           ./features/light.nix
           ./features/adb.nix

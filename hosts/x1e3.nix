@@ -56,18 +56,19 @@
   services = {
     xserver = {
       libinput.enable = true;
-      videoDrivers = [ "nvidia" ];
-      screenSection = ''
-        Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-        Option         "AllowIndirectGLXProtocol" "off"
-        Option         "TripleBuffer" "on"
-      '';
+      videoDrivers = [ "nouveau" ];
+      #videoDrivers = [ "nvidia" ];
+      #screenSection = ''
+      #  Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      #  Option         "AllowIndirectGLXProtocol" "off"
+      #  Option         "TripleBuffer" "on"
+      #'';
     };
   };
 
   hardware = {
     nvidia.prime = {
-      sync.enable = true;
+      sync.enable = false;
 
       # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
       nvidiaBusId = "PCI:1:0:0";

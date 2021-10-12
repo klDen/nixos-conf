@@ -22,8 +22,7 @@ rec {
     pcmanfm xournalpp zathura
     libreoffice
     docker-compose
-    volumeicon cmst pavucontrol
-    scrot
+    cmst pavucontrol
     libsForQt5.ark
     yubikey-personalization yubikey-manager-qt
     texlive.combined.scheme-full kile
@@ -130,8 +129,16 @@ rec {
       '';
     };
 
-    autorandr = {
+    jq.enable = true;
+    ssh.enable = true;
+    firefox.enable = true;
+    bat.enable = true;
+    exa = {
       enable = true;
+      enableAliases = true;
+    };
+    autorandr = {
+      enable = false;
       profiles = {
         "x1e3-docked" = {
           fingerprint = {
@@ -170,7 +177,7 @@ rec {
     };
 
     urxvt = {
-      enable = true;
+      enable = false;
       extraConfig = {
         scrollBar= false;
         background= "black";
@@ -193,20 +200,11 @@ rec {
         perl-ext-common= "clipboard,selection-to-clipboard";
       };
     };
-
-    jq.enable = true;
-    ssh.enable = true;
-    firefox.enable = true;
-    bat.enable = true;
-    exa = {
-      enable = true;
-      enableAliases = true;
-    };
   };
 
   services = {
     xidlehook = {
-      enable = true;
+      enable = false;
       not-when-audio = true;
       not-when-fullscreen = true;
       timers = [
@@ -224,21 +222,6 @@ rec {
           command = "systemctl suspend";
         }
       ];
-    };
-
-    caffeine.enable = true;
-    flameshot.enable = true;
-
-    redshift = {
-      enable = true;
-      tray = true;
-      latitude = 45.53;
-      longitude = -73.59;
-      provider = "manual";
-      temperature = {
-        day = 4000;
-        night = 1900;
-      };
     };
 
     gpg-agent = {

@@ -214,7 +214,8 @@ workspace 2 output $monitor_left
 workspace 3 output $monitor_right
 
 exec --no-startup-id volumeicon
-exec --no-startup-id cmst -m
+exec --no-startup-id caffeine
+exec --no-startup-id cmst -m -w 10
 
 exec --no-startup-id signal-desktop --start-in-tray --use-tray-icon
 exec --no-startup-id slack -u
