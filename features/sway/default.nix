@@ -9,28 +9,24 @@
       xorg.xlsclients
       wl-clipboard
       mako # notification daemon
-      foot
+      foot # terminal
       wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
       xwayland # for legacy apps
-      waybar # status bar
+      waybar libappindicator # status bar
       kanshi # autorandr
       gammastep # redshift for wayland
-      swappy grim slurp
+      swappy grim slurp # screenshot
       flashfocus
-
-      libappindicator-gtk3 gnomeExtensions.appindicator
     ];
-    # https://github.com/flameshot-org/flameshot/blob/master/docs/Sway%20and%20wlroots%20support.md#sway-and-wlroots-support
     extraSessionCommands = ''
       export _JAVA_AWT_WM_NONREPARENTING=1
       export MOZ_ENABLE_WAYLAND=1
+      export MOZ_USE_XINPUT2=1
+      export QT_QPA_PLATFORM=wayland
+      export SDL_VIDEODRIVER=wayland
+      export XDG_CURRENT_DESKTOP=sway
+      export XDG_SESSION_TYPE=wayland
     '';
-
-      #export MOZ_USE_XINPUT2=1
-      #export QT_QPA_PLATFORM=wayland
-      #export XDG_SESSION_TYPE=wayland
-      #export XDG_CURRENT_DESKTOP=sway
-      #export SDL_VIDEODRIVER=wayland
   };
 
   environment = {
@@ -39,11 +35,10 @@
       "sway/config".source = ./config;
       "xdg/waybar/config".source = ./waybar/config;
       "xdg/waybar/style.css".source = ./waybar/style.css;
-      "kanshi/config".source = ./kanshi/config;
       "xdg/swappy/config".source = ./swappy/config;
-    };
-    sessionVariables = rec {
-      XDG_CONFIG_HOME = "/etc/xdg";
+      "xdg/mako/config".source = ./mako/config;
+      "xdg/electron-flags.conf".source = ./electron/electron-flags.conf;
+      "kanshi/config".source = ./kanshi/config;
     };
   };
 
@@ -51,13 +46,16 @@
     font-awesome # for waybar 
   ];
 
-  #services = {
-  #  udev = {
-  #    # autoswitch to proper autorandr display profile
-  #    extraRules = ''
-  #      ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c '${pkgs.kanshi}/bin/kanshi --config /etc/kanshi/config'"
-  #    '';
-  #  };
+  # install flatpak: signal are crashing with wayland
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = true;
+  services.flatpak.enable = true;
+
+  #services.udev = {
+  #   # autoswitch to proper display profile
+  #   extraRules = ''
+  #     ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c 'swaymsg -s $SWAYSOCK output eDP-1 enable && pkill kanshi && ${pkgs.kanshi}/bin/kanshi --config /etc/kanshi/config'"
+  #   '';
   #}; 
 }
 

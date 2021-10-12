@@ -16,7 +16,7 @@ rec {
     monoid
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode arandr autocutsel
     ripgrep-all fd sd procs bandwhich
-    signal-desktop
+    #signal-desktop
     vlc
     chromium
     pcmanfm xournalpp zathura
