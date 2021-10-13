@@ -46,7 +46,7 @@
     font-awesome # for waybar 
   ];
 
-  # install flatpak: signal are crashing with wayland
+  # install flatpak: signal and zoom are crashing with wayland
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.enable = true;
   services.flatpak.enable = true;

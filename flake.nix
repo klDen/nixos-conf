@@ -60,7 +60,7 @@
             ./features/terraform.nix
             ./features/vault.nix
             ./features/helm.nix
-            ./features/zoom.nix
+            #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix
             ./features/jetbrains/enterprise/datagrip.nix

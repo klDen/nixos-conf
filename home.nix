@@ -18,7 +18,7 @@ rec {
     ripgrep-all fd sd procs bandwhich
     #signal-desktop
     vlc
-    chromium
+    #chromium
     pcmanfm xournalpp zathura
     libreoffice
     docker-compose
@@ -229,6 +229,7 @@ rec {
       enableSshSupport = true;
       pinentryFlavor = "gtk2";
     };
+    caffeine.enable = true;
   };
 
   # This value determines the Home Manager release that your
