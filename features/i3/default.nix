@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  environment = {
+    "xdg/autorandr" = ./autorandr;
+  };
+
   services = {
     xserver = {
       enable = true;
@@ -7,7 +11,7 @@
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
-        configFile = ./i3-klden/config;
+        configFile = ./config;
         extraPackages = with pkgs; [
           flameshot scrot
           volumeicon
@@ -17,6 +21,8 @@
           i3lock-fancy
           caffeine-ng
           xidlehook
+          autorandr arandr
+          autocutsel
         ];
       };
     };
@@ -63,3 +69,4 @@
     };
   };
 }
+

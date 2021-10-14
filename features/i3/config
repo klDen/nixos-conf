@@ -159,7 +159,6 @@ bindsym $mod+r mode "resize"
  bar {
         status_command i3status
         position bottom
-        #tray_output primary
 }
 
 set $Locker i3lock-fancy -gp -- scrot -z -o
@@ -206,13 +205,6 @@ for_window [class="jetbrains-datagrip"] move --no-auto-back-and-forth to workspa
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 0
 
-# monitors
-set $monitor_left DP-1-1
-set $monitor_right DP-1-2
-
-workspace 2 output $monitor_left
-workspace 3 output $monitor_right
-
 exec --no-startup-id volumeicon
 exec --no-startup-id caffeine
 exec --no-startup-id cmst -m -w 10
@@ -224,7 +216,7 @@ exec --no-startup-id urxvt
 
 exec --no-startup-id autocutsel -fork -selection PRIMARY
 exec --no-startup-id autocutsel -fork -selection CLIPBOARD
-exec --no-startup-id autorandr --change --default default
+exec --no-startup-id XDG_CONFIG_HOME=/etc/xdg autorandr --change --default default
 
 # Run xidlehook
 set $primary_display xrandr | awk '/ primary/{print $1}'
