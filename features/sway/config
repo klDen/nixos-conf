@@ -158,7 +158,7 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
   bindsym l exec $Locker, mode "default"
   bindsym e exec swaymsg exit, mode "default"
-  bindsym s exec $Locker && systemctl suspend, mode "default"
+  bindsym s exec systemctl suspend, mode "default"
   bindsym h exec $Locker && systemctl hibernate, mode "default"
   bindsym r exec systemctl reboot, mode "default"
   bindsym Shift+s exec systemctl poweroff -i, mode "default" 
@@ -204,14 +204,14 @@ for_window [class="jetbrains-datagrip"] move --no-auto-back-and-forth to workspa
 exec flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 exec flatpak install --or-update flathub us.zoom.Zoom
 exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland --start-in-tray
-exec slack -u
+exec slack --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland -u
 exec firefox
 exec $term
 
 exec XDG_CONFIG_HOME=/etc/xdg mako
 exec_always flashfocus
 exec gammastep -l 45.54:-73.59 -l manual -t 4000:1900
-exec cmst --minimized --wait-time 10
+exec cmst --minimized --wait-time 60
 # exec kanshi --config /etc/kanshi/config
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
