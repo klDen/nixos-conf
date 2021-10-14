@@ -202,9 +202,8 @@ for_window [class="jetbrains-pycharm"] move --no-auto-back-and-forth to workspac
 for_window [class="jetbrains-datagrip"] move --no-auto-back-and-forth to workspace 3, layout tabbed
 
 exec flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-exec flatpak install --or-update flathub org.signal.Signal
 exec flatpak install --or-update flathub us.zoom.Zoom
-exec org.signal.Signal --start-in-tray
+exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland --start-in-tray
 exec slack -u
 exec firefox
 exec $term
@@ -212,6 +211,7 @@ exec $term
 exec XDG_CONFIG_HOME=/etc/xdg mako
 exec_always flashfocus
 exec gammastep -l 45.54:-73.59 -l manual -t 4000:1900
+exec cmst --minimized --wait-time 10
 # exec kanshi --config /etc/kanshi/config
 
 # This will lock your screen after 300 seconds of inactivity, then turn off

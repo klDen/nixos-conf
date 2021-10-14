@@ -47,7 +47,8 @@
           [
             ./features/virtualbox.nix
             ./features/jetbrains/community/intellij.nix
-            ./features/i3
+            #./features/i3
+            ./features/sway
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
