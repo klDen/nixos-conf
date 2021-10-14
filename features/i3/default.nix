@@ -1,7 +1,15 @@
 { config, pkgs, ... }:
 {
   environment = {
-    "xdg/autorandr" = ./autorandr;
+    etc = {
+      "xdg/autorandr".source = ./autorandr;
+    };
+  };
+
+  location = {
+    provider = "manual";
+    longitude = -73.59;
+    latitude = 45.53;
   };
 
   services = {
@@ -29,9 +37,6 @@
 
     redshift = {
       enable = true;
-      provider = "manual";
-      longitude = -73.59;
-      latitude = 45.53;
       temperature = {
         day = 4000;
         night = 1900;
@@ -66,7 +71,6 @@
     udev.extraRules = ''
       ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c '${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
     '';
-    };
   };
 }
 
