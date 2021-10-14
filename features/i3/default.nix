@@ -31,6 +31,7 @@
           xidlehook
           autorandr arandr
           autocutsel
+          rxvt-unicode
         ];
       };
     };
