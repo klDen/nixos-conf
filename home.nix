@@ -16,9 +16,9 @@ rec {
     monoid
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode arandr autocutsel
     ripgrep-all fd sd procs bandwhich
-    #signal-desktop
+    #signal-desktop # currently using flatpak cause broken on sway/wayland
     vlc
-    #chromium
+    #chromium # slow to build
     pcmanfm xournalpp zathura
     libreoffice
     docker-compose
@@ -168,62 +168,15 @@ rec {
             eDP-1-1 = {
               enable = true;
               primary = true;
-              #mode = "1920x1080";
               mode = "3840x2160";
             };
           };
         };
       };
     };
-
-    urxvt = {
-      enable = false;
-      extraConfig = {
-        scrollBar= false;
-        background= "black";
-        foreground= "white";
-        boldFont="";
-        color3=           "DarkGoldenrod";
-        color4=           "RoyalBlue";
-        color11=          "LightGoldenrod";
-        color12=          "LightSteelBlue";
-        color7=           "gray75";
-        colorBD=          "#ffffff";
-        colorUL=          "LightSlateGrey";
-        colorIT=          "SteelBlue";
-        cursorColor=      "grey90";
-        highlightColor=   "grey25";
-        iso14755= false;
-        iso14755_52= false;
-        font= "xft:monoid:size=15";
-        letterSpace= -2;
-        perl-ext-common= "clipboard,selection-to-clipboard";
-      };
-    };
   };
 
   services = {
-    xidlehook = {
-      enable = false;
-      not-when-audio = true;
-      not-when-fullscreen = true;
-      timers = [
-        {
-          delay = 120;
-          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 0.1:0.1";
-          canceller = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1";
-        }
-        {
-          delay = 10;
-          command = "${pkgs.redshift}/bin/redshift -o -l 45.53:-73.59 -b 1:1; ${pkgs.i3lock-fancy}/bin/i3lock-fancy -gp -- ${pkgs.scrot}/bin/scrot -z -o";
-        }
-        {
-          delay = 3600;
-          command = "systemctl suspend";
-        }
-      ];
-    };
-
     gpg-agent = {
       enable = true;
       enableSshSupport = true;

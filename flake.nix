@@ -21,8 +21,6 @@
 
           # Features common to all of my machines
           ./features/default.nix
-          #./features/i3
-          ./features/sway
           ./features/connman-iwd.nix
           ./features/light.nix
           ./features/adb.nix
@@ -49,10 +47,12 @@
           [
             ./features/virtualbox.nix
             ./features/jetbrains/community/intellij.nix
+            ./features/i3
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
           [
+            ./features/sway
             ./features/globalprotect.nix
             ./features/google-cloud.nix
             ./features/poetry.nix

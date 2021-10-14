@@ -9,20 +9,18 @@
         package = pkgs.i3-gaps;
         configFile = ./i3-klden/config;
         extraPackages = with pkgs; [
-          scrot
+          flameshot scrot
           volumeicon
           dmenu #application launcher most people use
           i3status
           i3-gaps
           i3lock-fancy
-          flameshot
           caffeine-ng
+          xidlehook
         ];
       };
     };
-  };
 
-  services = {
     redshift = {
       enable = true;
       provider = "manual";
@@ -33,10 +31,35 @@
         night = 1900;
       };
     };
-    udev = {
-     # autoswitch to proper autorandr display profile
-     extraRules = ''
-       ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c '${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
+
+    xserver.displayManager.sessionCommands = ''
+      ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+        URxvt.scrollBar: 	false
+        URxvt.background:       black
+        URxvt.foreground: 	white
+        URxvt.boldFont:
+        URxvt.font: 		xft:monoid:size=15
+        URxvt.letterSpace: 	-2 
+        URxvt.perl-ext-common:  clipboard,selection-to-clipboard
+        URxvt.color3:           DarkGoldenrod
+        URxvt.color4:           RoyalBlue
+        URxvt.color7:           gray75
+        URxvt.color11:          LightGoldenrod
+        URxvt.color12:          LightSteelBlue
+        URxvt.colorBD:          #ffffff
+        URxvt.colorUL:          LightSlateGrey
+        URxvt.colorIT:          SteelBlue
+        URxvt.cursorColor:      grey90
+        URxvt.highlightColor:   grey25
+        URxvt.iso14755: 	false
+        URxvt.iso14755_52: 	false
+      EOF
     '';
+
+    # autoswitch to proper autorandr display profile
+    udev.extraRules = ''
+      ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.stdenv.shell} -c '${pkgs.autorandr}/bin/autorandr --batch --change --default default'"
+    '';
+    };
   };
 }
