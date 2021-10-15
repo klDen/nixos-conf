@@ -152,7 +152,7 @@ bar {
   swaybar_command waybar
 }
 
-set $Locker swaylock --daemonize --screenshots --effect-greyscale --effect-pixelate 5 && sleep 3
+set $Locker swaylock --daemonize --screenshots --effect-greyscale --effect-pixelate 5
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -204,8 +204,8 @@ for_window [title="^GlobalProtect.*"] move --no-auto-back-and-forth to workspace
 
 exec flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 exec flatpak install --or-update flathub us.zoom.Zoom
-exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland --start-in-tray
-exec slack --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland -u
+exec signal-desktop --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland # broken in wayland --start-in-tray
+exec slack # broken in wayland --enable-features=UseOzonePlatform --ozone-platform=wayland -u
 exec firefox
 exec $term
 
