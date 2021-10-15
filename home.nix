@@ -18,7 +18,7 @@ rec {
     ripgrep-all fd sd procs bandwhich
     signal-desktop # currently start-in-tray/icon broken on sway/wayland
     vlc
-    #chromium # slow to build
+    chromium # slow to build
     pcmanfm xournalpp zathura
     libreoffice
     docker-compose

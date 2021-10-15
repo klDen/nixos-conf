@@ -200,6 +200,7 @@ for_window [class="Slack"] move --no-auto-back-and-forth to workspace 1, layout 
 for_window [class="jetbrains-idea"] move --no-auto-back-and-forth to workspace 3, layout tabbed
 for_window [class="jetbrains-pycharm"] move --no-auto-back-and-forth to workspace 3, layout tabbed
 for_window [class="jetbrains-datagrip"] move --no-auto-back-and-forth to workspace 3, layout tabbed
+for_window [title="^GlobalProtect.*"] move --no-auto-back-and-forth to workspace 4, layout default
 
 exec flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 exec flatpak install --or-update flathub us.zoom.Zoom
