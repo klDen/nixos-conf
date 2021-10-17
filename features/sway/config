@@ -152,7 +152,7 @@ bar {
   swaybar_command waybar
 }
 
-set $Locker swaylock --daemonize --screenshots --effect-greyscale --effect-pixelate 5
+set $Locker swaylock --daemonize --fade-in 3 --screenshots --effect-greyscale --effect-pixelate 5
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -212,7 +212,7 @@ exec $term
 exec XDG_CONFIG_HOME=/etc/xdg mako
 exec_always flashfocus
 exec gammastep -l 45.54:-73.59 -l manual -t 4000:1900
-exec cmst --minimized --wait-time 60
+# exec cmst --minimized --wait-time 60 # needs to be loaded after tray starts
 # exec kanshi --config /etc/kanshi/config
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
