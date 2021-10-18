@@ -212,8 +212,8 @@ exec $term
 exec XDG_CONFIG_HOME=/etc/xdg mako
 exec_always flashfocus
 exec gammastep -l 45.54:-73.59 -l manual -t 4000:1900
-# exec cmst --minimized --wait-time 60 # needs to be loaded after tray starts
 # exec kanshi --config /etc/kanshi/config
+exec sleep 5 && cmst --minimized --wait-time 3 # needs to be loaded after tray starts
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
