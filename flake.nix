@@ -20,11 +20,14 @@
           configurationNix
 
           # Features common to all of my machines
+          #./features/i3
+          ./features/sway
           ./features/default.nix
           ./features/connman-iwd.nix
           ./features/light.nix
           ./features/adb.nix
           ./features/docker.nix
+          ./features/podman.nix
           ./features/slack.nix
 
           # home-manager configuration
@@ -47,13 +50,10 @@
           [
             ./features/virtualbox.nix
             ./features/jetbrains/community/intellij.nix
-            #./features/i3
-            ./features/sway
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
           [
-            ./features/sway
             ./features/globalprotect.nix
             ./features/google-cloud.nix
             ./features/poetry.nix
@@ -72,3 +72,4 @@
       };
     };
 }
+

@@ -19,11 +19,9 @@ rec {
     signal-desktop # currently start-in-tray/icon broken on sway/wayland
     vlc
     chromium # slow to build
-    pcmanfm xournalpp zathura
+    pcmanfm xournalpp zathura libsForQt5.ark
     libreoffice
-    docker-compose
     cmst pavucontrol
-    libsForQt5.ark
     yubikey-personalization yubikey-manager-qt
     texlive.combined.scheme-full kile
     #scrcpy
