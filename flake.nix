@@ -50,6 +50,7 @@
           [
             ./features/virtualbox.nix
             ./features/jetbrains/community/intellij.nix
+            ./features/wireshark.nix
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
