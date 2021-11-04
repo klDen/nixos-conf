@@ -55,6 +55,7 @@
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
           [
+            ./features/beyond-identity.nix
             ./features/globalprotect.nix
             ./features/google-cloud.nix
             ./features/poetry.nix
