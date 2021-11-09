@@ -29,6 +29,7 @@
           ./features/docker.nix
           ./features/podman.nix
           ./features/slack.nix
+          ./features/virtualbox.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
@@ -48,7 +49,6 @@
         desktop = mkHomeMachine
           ./hosts/desktop.nix
           [
-            ./features/virtualbox.nix
             ./features/jetbrains/community/intellij.nix
             ./features/wireshark.nix
           ];

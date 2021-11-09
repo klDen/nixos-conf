@@ -15,7 +15,7 @@ rec {
   home.packages = with pkgs; [
     monoid
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode
-    ripgrep-all fd sd procs bandwhich
+    ripgrep-all fd sd procs bandwhich lsof
     signal-desktop # currently start-in-tray/icon broken on sway/wayland
     vlc
     chromium # slow to build
