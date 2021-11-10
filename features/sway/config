@@ -224,7 +224,7 @@ exec swayidle -w \
        before-sleep $Locker
 
 #https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemctl --user import-environment
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 

@@ -17,6 +17,7 @@
       gammastep # redshift for wayland
       swappy grim slurp # screenshot
       flashfocus
+      firefox-wayland
     ];
     extraSessionCommands = ''
       export _JAVA_AWT_WM_NONREPARENTING=1
@@ -47,9 +48,20 @@
   ];
 
   # install flatpak: signal and zoom are crashing with wayland
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  xdg.portal.enable = true;
   services.flatpak.enable = true;
+
+  # required for firefox on wayland
+  services.pipewire.enable = true;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [ 
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
+      gtkUsePortal = true;
+    };
+  };
 
   #services.udev = {
   #   # autoswitch to proper display profile

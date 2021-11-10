@@ -32,6 +32,7 @@
           autorandr arandr
           autocutsel
           rxvt-unicode
+          firefox-bin
         ];
       };
     };

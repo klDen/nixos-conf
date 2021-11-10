@@ -129,7 +129,6 @@ rec {
 
     jq.enable = true;
     ssh.enable = true;
-    firefox.enable = true;
     bat.enable = true;
     exa = {
       enable = true;
