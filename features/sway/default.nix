@@ -18,6 +18,7 @@
       swappy grim slurp # screenshot
       flashfocus
       firefox-wayland
+      polkit_gnome
     ];
     extraSessionCommands = ''
       export _JAVA_AWT_WM_NONREPARENTING=1
@@ -41,6 +42,8 @@
       "xdg/electron-flags.conf".source = ./electron/electron-flags.conf;
       "kanshi/config".source = ./kanshi/config;
     };
+    # polkit https://nixos.wiki/wiki/Sway
+    pathsToLink = [ "/libexec" ];
   };
 
   fonts.fonts = with pkgs; [

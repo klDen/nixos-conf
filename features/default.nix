@@ -50,8 +50,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   services = {
     pcscd.enable = true;
 

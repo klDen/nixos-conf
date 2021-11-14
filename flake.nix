@@ -10,9 +10,12 @@
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      # Make configuration for any computer I use in my home office.
+      pkgs = import nixpkgs { 
+        inherit system; 
+        config.allowUnfree = true;
+      };
       mkHomeMachine = configurationNix: extraModules: nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit system pkgs;
         # Arguments to pass to all modules.
         specialArgs = { inherit system inputs; };
         modules = ([
@@ -37,8 +40,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.klden = import ./home.nix {
-              inherit inputs system;
-              pkgs = import nixpkgs { inherit system; };
+              inherit inputs system pkgs;
             };
           }
         ] ++ extraModules);
