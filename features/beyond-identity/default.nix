@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchurl, dpkg
-, openssl, tpm2-tss, glibc, glib, gtk3
-, polkit, polkit_gnome, dbus, gnome, libnotify, libsecret
+{ lib, stdenv, fetchurl, dpkg, buildFHSUserEnv
+, glibc, glib, openssl, tpm2-tss
+, gtk3, gnome, polkit, polkit_gnome
 }:
 
 let
@@ -13,34 +13,30 @@ let
   };
 
   libPath = lib.makeLibraryPath ([
-    glib
-    glibc
-    openssl
-    tpm2-tss
-    dbus
-    gnome.gnome-keyring
-    gtk3
-    libnotify
-    libsecret
-    polkit
-    polkit_gnome
+    glib glibc openssl tpm2-tss
+    gtk3 gnome.gnome-keyring
+    polkit polkit_gnome
   ]); 
-in stdenv.mkDerivation {
+in let beyond-identity = stdenv.mkDerivation {
   pname = name;
 
   inherit version;
   inherit src;
 
-  # compilation
+  dontUnpack = true;
+
   nativeBuildInputs = [
     dpkg
   ];
 
-  dontUnpack = true;
-
   installPhase = ''
     dpkg -x $src .
     mkdir -p $out/opt/beyond-identity
+
+    rm -rf usr/share/doc
+
+    # https://github.com/NixOS/nixpkgs/issues/42117
+    sed -i -e 's/auth_self/yes/g' usr/share/polkit-1/actions/com.beyondidentity.endpoint.stepup.policy
 
     cp -arv usr/{bin,share} $out
     cp -arv opt/beyond-identity/bin $out/opt/beyond-identity
@@ -63,9 +59,6 @@ in stdenv.mkDerivation {
       --replace /opt/ $out/opt/ \
       --replace /usr/bin/gtk-launch ${gtk3}/bin/gtk-launch
 
-    # /usr/bin/pkcheck is hardcoded in binary. change for buildFHSUserEnv??
-    # --replace /usr/bin/pkcheck ${polkit}/bin/pkcheck
-
     patchelf \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
       --set-rpath "${libPath}" \
@@ -74,12 +67,33 @@ in stdenv.mkDerivation {
   '';
 
   meta = with lib; {
-    description = "Linux client for beyond-identity";
+    description = "Passwordless MFA identities for workforces, customers, and developers";
     homepage = "https://www.beyondidentity.com";
     downloadPage = "https://app.byndid.com/downloads";
     license = licenses.unfree;
     maintainers = with maintainers; [ klden ];
     platforms = [ "x86_64-linux" ];
   };
+};
+# /usr/bin/pkcheck is hardcoded in binary - we need FHS
+in buildFHSUserEnv {
+   inherit name;
+
+   targetPkgs = pkgs: [
+     beyond-identity
+     glib glibc openssl tpm2-tss
+     gtk3 gnome.gnome-keyring
+     polkit polkit_gnome
+   ];
+
+   profile = ''
+     ${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 2>/dev/null || true
+   '';
+
+   extraInstallCommands = ''
+     ln -s ${beyond-identity}/share $out
+   '';
+
+   runScript = "beyond-identity";
 }
 
