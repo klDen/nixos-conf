@@ -77,8 +77,6 @@ rec {
       initExtra = ''
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
-        #gpg-connect-agent /bye
-        #export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
         if [[ $DISPLAY ]]; then
           # If not running interactively, don't do anything
@@ -96,6 +94,8 @@ rec {
             fi
           fi
         fi
+        # make sec ENVS available to all my terms
+        source $HOME/.zshenv.sec 2>/dev/null || true
       '';
       prezto = {
         enable = true;
