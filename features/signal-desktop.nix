@@ -1,21 +1,21 @@
 { lib, pkgs, ... }:
 let
-  slack = pkgs.slack.overrideAttrs (old: {
+  signal-desktop = pkgs.signal-desktop.overrideAttrs (old: {
     installPhase = old.installPhase + ''
-      rm $out/bin/slack
+      rm $out/bin/signal-desktop
 
-      makeWrapper $out/lib/slack/slack $out/bin/slack \
+      makeWrapper $out/lib/Signal/signal-desktop $out/bin/signal-desktop \
         --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
         --prefix PATH : ${lib.makeBinPath [pkgs.xdg-utils]} \
-        --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer"
+        --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform"
     '';
-    # -u flag (tray) broken in wayland 
+    # broken in wayland: --start-in-tray --enable-features=WebRTCPipeWireCapturer
   });
 in
 {
   environment = {
     systemPackages = (with pkgs; [
-      slack
+      signal-desktop
     ]);
   };
 

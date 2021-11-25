@@ -32,6 +32,7 @@
           ./features/docker.nix
           ./features/podman.nix
           ./features/slack.nix
+          ./features/signal-desktop.nix
           ./features/virtualbox.nix
 
           # home-manager configuration

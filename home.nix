@@ -16,7 +16,6 @@ rec {
     monoid
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode
     ripgrep-all fd sd procs bandwhich lsof
-    signal-desktop
     vlc
     chromium # slow to build
     pcmanfm xournalpp zathura libsForQt5.ark
