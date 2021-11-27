@@ -10,6 +10,7 @@ let
         --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform"
     '';
     # broken in wayland: --start-in-tray --enable-features=WebRTCPipeWireCapturer
+    # https://github.com/signalapp/Signal-Desktop/issues/5350
   });
 in
 {
