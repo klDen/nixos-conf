@@ -13,9 +13,7 @@
     };
 
     systemPackages = (with pkgs; [
-      (jetbrains.idea-community.override { 
-        jdk = pkgs.jdk11;
-      })
+      jetbrains.idea-community
     ]);
   };
 }
