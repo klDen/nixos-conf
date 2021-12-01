@@ -3,7 +3,7 @@
 , gtk3, gnome, polkit, polkit_gnome
 }:
 
-let 
+let
   pname = "beyond-identity";
   version = "2.45.0-0";
   libPath = lib.makeLibraryPath ([ glib glibc openssl tpm2-tss gtk3 gnome.gnome-keyring polkit polkit_gnome ]);
@@ -15,7 +15,7 @@ let
     maintainers = with maintainers; [ klden ];
     platforms = [ "x86_64-linux" ];
   };
-  
+
   beyond-identity = stdenv.mkDerivation {
     inherit pname version meta;
 
