@@ -3,7 +3,7 @@
 {
   environment = {
     systemPackages = (with pkgs; [
-      jetbrains.idea-ultimate
+      chart-testing
     ]);
   };
 }

@@ -34,6 +34,7 @@
           ./features/slack.nix
           ./features/signal-desktop.nix
           ./features/virtualbox.nix
+          ./features/java.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
@@ -67,6 +68,11 @@
             ./features/terraform.nix
             ./features/vault.nix
             ./features/helm.nix
+            ./features/scala.nix
+            ./features/chart-testing.nix
+            ./features/yamale.nix
+            ./features/yamllint.nix
+            ./features/kind.nix
             #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix
