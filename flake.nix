@@ -30,10 +30,9 @@
           ./features/light.nix
           ./features/adb.nix
           ./features/docker.nix
-          ./features/podman.nix
+          #./features/podman.nix
           ./features/slack.nix
           ./features/signal-desktop.nix
-          ./features/virtualbox.nix
           ./features/java.nix
 
           # home-manager configuration
@@ -55,6 +54,7 @@
           [
             ./features/jetbrains/community/intellij.nix
             ./features/wireshark.nix
+            ./features/virtualbox.nix
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix

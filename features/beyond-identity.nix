@@ -3,7 +3,8 @@
 
   environment = {
     systemPackages = (with pkgs; [
-     (callPackage ./beyond-identity {})
+      beyond-identity
+      #(callPackage ./beyond-identity {})
     ]);
   };
 }
