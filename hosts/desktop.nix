@@ -7,9 +7,9 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "wl" ];
+  boot.kernelModules = [ "kvm-amd" "wl" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.initrd.luks.devices.root = { 
     device = "/dev/nvme0n1p2";
     preLVM = true;

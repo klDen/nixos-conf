@@ -23,6 +23,7 @@ rec {
     cmst pavucontrol
     yubikey-personalization yubikey-manager-qt
     texlive.combined.scheme-full kile
+    pciutils
     #scrcpy
   ];
 

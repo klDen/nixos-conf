@@ -55,6 +55,7 @@
             ./features/jetbrains/community/intellij.nix
             ./features/wireshark.nix
             ./features/virtualbox.nix
+            ./features/broadcom_sta.nix
           ];
         x1e3 = mkHomeMachine
           ./hosts/x1e3.nix
