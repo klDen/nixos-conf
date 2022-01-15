@@ -186,11 +186,10 @@ bindsym Print exec grim -g "$(slurp)" - | XDG_CONFIG_HOME=/etc/xdg swappy -f -
 # Jump to urgent window
 bindsym $mod+x [urgent=latest] focus
 
-workspace 1 output HDMI-A-1
-workspace 2 output HDMI-A-1
-workspace 3 output HDMI-A-1
-workspace 4 output HDMI-A-1
-workspace 5 output HDMI-A-1
+#workspace 1 output HDMI-A-1
+#workspace 2 output HDMI-A-1
+#workspace 3 output HDMI-A-1
+#workspace 4 output HDMI-A-1
 
 for_window [app_id="Signal"] move --no-auto-back-and-forth to workspace 1, layout default 
 for_window [app_id="firefox"] move --no-auto-back-and-forth to workspace 2, layout tabbed, focus
