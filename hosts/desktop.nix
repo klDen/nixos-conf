@@ -36,7 +36,9 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [ "root" "klden" ];
+    settings = {
+      trusted-users = [ "root" "klden" ];
+    };
   };
 
   networking.hostName = "desktop";
