@@ -66,6 +66,7 @@
             ./features/google-cloud.nix
             ./features/poetry.nix
             ./features/python.nix
+            ./features/pipenv.nix
             ./features/terraform.nix
             ./features/vault.nix
             ./features/helm.nix

@@ -204,7 +204,7 @@ for_window [title="^GlobalProtect.*"] move --no-auto-back-and-forth to workspace
 exec flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 exec flatpak install --or-update flathub us.zoom.Zoom
 exec signal-desktop
-exec slack --disable-gpu
+#exec slack --disable-gpu
 #exec chromium --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland --app=https://slack.com/app
 exec firefox
 exec $term

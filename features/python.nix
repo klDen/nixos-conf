@@ -3,7 +3,7 @@
 {
   environment = {
     systemPackages = (with pkgs; [
-      python3Full
+      python37Full
     ]);
   };
 }
