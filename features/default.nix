@@ -82,13 +82,6 @@
     };
   };
 
-  hardware = {
-    pulseaudio = {
-      enable = true;
-      extraConfig = "set-default-source alsa_input.usb-Blue_Microphones_Yeti_X_2052SG005LJ8_888-000313110306-00.analog-stereo\nset-default-sink alsa_output.pci-0000_0a_00.1.hdmi-stereo";
-    };
-  };
-
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.

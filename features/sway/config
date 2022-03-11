@@ -235,7 +235,8 @@ exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 # Set your laptop screen name
 set $laptop_screen 'eDP-1'
 # This is a if/else statement: [ outputs_count == 1 ] && true || false
-bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($Locker && systemctl suspend) || (swaymsg output $laptop_screen disable)'
+#bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($Locker && systemctl hibernate) || (swaymsg output $laptop_screen disable)'
+bindswitch --reload --locked lid:on exec '($Locker) && (swaymsg output $laptop_screen disable)'
 bindswitch --reload --locked lid:off output $laptop_screen enable
 
 include @sysconfdir@/sway/config.d/*

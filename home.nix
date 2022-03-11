@@ -17,8 +17,7 @@ rec {
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode
     ripgrep-all fd sd procs bandwhich lsof
     vlc
-    chromium # slow to build
-    pcmanfm xournalpp zathura libsForQt5.ark
+    pcmanfm xournalpp okular libsForQt5.ark
     libreoffice
     cmst pavucontrol
     yubikey-personalization yubikey-manager-qt
