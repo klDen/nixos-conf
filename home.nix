@@ -15,6 +15,7 @@ rec {
   home.packages = with pkgs; [
     monoid
     curl tree git wget which htop file ntfs3g woeusb gnumake gcc binutils bc bind usbutils dmidecode
+    p7zip
     ripgrep-all fd sd procs bandwhich lsof
     vlc
     pcmanfm xournalpp okular libsForQt5.ark

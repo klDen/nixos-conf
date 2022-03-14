@@ -2,7 +2,7 @@
   description = "klden's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/a1ca3247f186634bc7cc9e08d2721687fa38ea9b";
+    nixpkgs.url = "github:nixos/nixpkgs/dc40ef66835e49e5ee9e927bbd2d619a0ec93464";
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
