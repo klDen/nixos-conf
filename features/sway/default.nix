@@ -1,5 +1,23 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
+  services.getty.autologinUser = "klden";
+
+  # enabling login display managers slows down graphical session for some reasons...
+  services.greetd = {
+    enable = false;
+    restart = false;
+    settings = {
+      default_session = {
+        command = "${lib.makeBinPath [pkgs.greetd.tuigreet] }/tuigreet --time --remember --asterisks --cmd sway";
+        user = "greeter";
+      };
+      initial_session = {
+        command = "sway";
+        user = "klden";
+      };
+    };
+  };
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -33,6 +51,11 @@
   };
 
   environment = {
+    loginShellInit = ''
+      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+	exec sway
+      fi
+    '';
     etc = {
       # Put config files in /etc. Note that you also can put these in ~/.config, but then you can't manage them with NixOS anymore!
       "sway/config".source = ./config;

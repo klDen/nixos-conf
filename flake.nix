@@ -2,7 +2,7 @@
   description = "klden's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/dc40ef66835e49e5ee9e927bbd2d619a0ec93464";
+    #nixpkgs.url = "github:nixos/nixpkgs/dc40ef66835e49e5ee9e927bbd2d619a0ec93464";
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +77,7 @@
             ./features/yamllint.nix
             ./features/kind.nix
             ./features/chromium.nix
+            #./features/virtualbox.nix
             #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix

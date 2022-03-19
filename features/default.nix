@@ -64,9 +64,6 @@
     #printing.enable = true;
 
     xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
-      
       layout = "us";
       xkbVariant = "altgr-intl";
 
@@ -74,9 +71,6 @@
         autoLogin = {
           enable = true;
           user = "klden";
-        };
-        lightdm = {
-          enable = true;
         };
       };
     };
