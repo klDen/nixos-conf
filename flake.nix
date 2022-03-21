@@ -76,7 +76,6 @@
             ./features/yamale.nix
             ./features/yamllint.nix
             ./features/kind.nix
-            ./features/chromium.nix
             #./features/virtualbox.nix
             #./features/zoom.nix
 

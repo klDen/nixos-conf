@@ -36,6 +36,12 @@
       swappy grim slurp # screenshot
       flashfocus
       firefox-wayland
+      (chromium.override {
+	commandLineArgs = [
+	  "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer"
+	  "--ozone-platform=wayland"
+	];
+      }) 
       polkit_gnome
       pulseaudio # adjust volume in pipewire
     ];
@@ -88,9 +94,6 @@
       gtkUsePortal = true;
     };
   };
-
-  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-  #sound.enable = false;
 
   # rtkit is optional but recommended
   security.rtkit.enable = true;

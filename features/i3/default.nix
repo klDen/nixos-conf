@@ -37,6 +37,7 @@
           autocutsel
           rxvt-unicode
           firefox-bin
+          chromium
         ];
       };
     };
