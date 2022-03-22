@@ -35,6 +35,7 @@
           ./features/slack.nix
           ./features/signal-desktop.nix
           ./features/java.nix
+          ./features/retext.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
