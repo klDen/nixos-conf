@@ -83,4 +83,8 @@
     mv -f /lib64/ld-linux-x86-64.so.2.tmp /lib64/ld-linux-x86-64.so.2
   '';
 
+  networking.resolvconf.extraOptions = [
+    "rotate"
+    "timeout:1"
+  ];
 }

@@ -27,7 +27,8 @@
           #./features/i3
           ./features/sway
           ./features/default.nix
-          ./features/connman-iwd.nix
+          ./features/networkmanager-iwd.nix
+          #./features/connman-iwd.nix
           ./features/light.nix
           ./features/adb.nix
           ./features/docker.nix
