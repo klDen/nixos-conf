@@ -2,10 +2,12 @@
   description = "klden's NixOS config";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/dc40ef66835e49e5ee9e927bbd2d619a0ec93464";
+    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
@@ -14,6 +16,9 @@
       pkgs = import nixpkgs { 
         inherit system; 
         config.allowUnfree = true;
+        nixpkgs.overlays = [
+          inputs.nixpkgs-wayland.overlay
+        ];
       };
       mkHomeMachine = configurationNix: extraModules: nixpkgs.lib.nixosSystem {
         inherit system pkgs;
@@ -26,6 +31,7 @@
           # Features common to all of my machines
           #./features/i3
           ./features/sway
+          ./features/caches
           ./features/default.nix
           ./features/networkmanager-iwd.nix
           #./features/connman-iwd.nix

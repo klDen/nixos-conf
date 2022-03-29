@@ -37,10 +37,10 @@
       flashfocus
       firefox-wayland
       (chromium.override {
-	commandLineArgs = [
-	  "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer"
-	  "--ozone-platform=wayland"
-	];
+        commandLineArgs = [
+          "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer"
+          "--ozone-platform=wayland"
+        ];
       }) 
       polkit_gnome
       pulseaudio # adjust volume in pipewire
