@@ -19,7 +19,7 @@ rec {
     ripgrep-all fd sd procs bandwhich lsof
     vlc
     pcmanfm xournalpp okular libsForQt5.ark
-    libreoffice
+    libreoffice-fresh
     cmst pavucontrol
     yubikey-personalization yubikey-manager-qt
     texlive.combined.scheme-full kile
@@ -136,14 +136,9 @@ rec {
     };
   };
 
-  services = {
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      pinentryFlavor = "gtk2";
-    };
-    caffeine.enable = true;
-  };
+  #services = {
+  #  caffeine.enable = true;
+  #};
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

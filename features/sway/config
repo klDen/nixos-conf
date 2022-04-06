@@ -219,10 +219,10 @@ exec nm-applet --indicator
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w \
-       timeout 300 $Locker \
-       timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-       before-sleep $Locker
+#exec swayidle -w \
+#       timeout 300 $Locker \
+#       timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#       before-sleep $Locker
 
 #https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
 exec systemctl --user import-environment
@@ -237,8 +237,8 @@ exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 set $laptop_screen 'eDP-1'
 # This is a if/else statement: [ outputs_count == 1 ] && true || false
 #bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($Locker && systemctl hibernate) || (swaymsg output $laptop_screen disable)'
-bindswitch --reload --locked lid:on exec '($Locker) && (swaymsg output $laptop_screen disable)'
-bindswitch --reload --locked lid:off output $laptop_screen enable
+#bindswitch --reload --locked lid:on exec '($Locker) && (swaymsg output $laptop_screen disable)'
+#bindswitch --reload --locked lid:off output $laptop_screen enable
 
 include @sysconfdir@/sway/config.d/*
 

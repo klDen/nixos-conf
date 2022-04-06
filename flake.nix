@@ -43,6 +43,7 @@
           ./features/signal-desktop.nix
           ./features/java.nix
           ./features/retext.nix
+          ./features/gnupg.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
@@ -88,10 +89,10 @@
             #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix
-            ./features/jetbrains/enterprise/datagrip.nix
+            #./features/jetbrains/enterprise/datagrip.nix
             ./features/jetbrains/enterprise/pycharm.nix
-            ./features/jetbrains/enterprise/webstorm.nix
-            ./features/jetbrains/enterprise/goland.nix
+            #./features/jetbrains/enterprise/webstorm.nix
+            #./features/jetbrains/enterprise/goland.nix
           ];
       };
     };
