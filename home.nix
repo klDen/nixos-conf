@@ -11,6 +11,7 @@ rec {
   home.homeDirectory = "/home/klden";
 
   fonts.fontconfig.enable = true;
+  home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Amber";
 
   home.packages = with pkgs; [
     monoid
