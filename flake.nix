@@ -85,7 +85,7 @@
             ./features/yamale.nix
             ./features/yamllint.nix
             ./features/kind.nix
-            #./features/virtualbox.nix
+            ./features/virtualbox.nix
             #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix
