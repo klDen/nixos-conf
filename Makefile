@@ -1,7 +1,7 @@
 all:
-	sudo nixos-rebuild switch --flake .
+	nixos-rebuild switch --use-remote-sudo --flake .
 
 update:
-	sudo nix flake lock --update-input home-manager
-	sudo nix flake lock --update-input nixpkgs
+	nix flake lock --update-input home-manager
+	nix flake lock --update-input nixpkgs
 

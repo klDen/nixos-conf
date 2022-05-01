@@ -2,11 +2,11 @@
 
 {
   # https://github.com/yuezk/GlobalProtect-openconnect/issues/69#issuecomment-988957394
-  #environment = {
-  #  systemPackages = (with pkgs; [
-  #    globalprotect-openconnect
-  #  ]);
-  #};
+  environment = {
+    systemPackages = (with pkgs; [
+      globalprotect-openconnect
+    ]);
+  };
 
   services.globalprotect = {
     enable = true;
