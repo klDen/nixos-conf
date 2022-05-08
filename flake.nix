@@ -92,7 +92,8 @@
             #./features/jetbrains/enterprise/datagrip.nix
             ./features/jetbrains/enterprise/pycharm.nix
             #./features/jetbrains/enterprise/webstorm.nix
-            #./features/jetbrains/enterprise/goland.nix
+            ./features/jetbrains/enterprise/goland.nix
+            ./features/go.nix
           ];
       };
     };

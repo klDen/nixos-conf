@@ -80,9 +80,6 @@
     font-awesome # for waybar 
   ];
 
-  # install flatpak: signal and zoom are crashing with wayland
-  services.flatpak.enable = true;
-
   # required for firefox on wayland
   xdg = {
     portal = {
