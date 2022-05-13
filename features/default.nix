@@ -82,4 +82,6 @@
   networking.useDHCP = false;
 
   time.timeZone = "America/Montreal";
+
+  system.stateVersion = "22.05";
 }
