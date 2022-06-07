@@ -11,9 +11,10 @@ in {
   systemd.services.falcon-sensor = {
     enable = true;
     description = "CrowdStrike Falcon Sensor";
+    unitConfig.DefaultDependencies = false;
     after = [ "local-fs.target" ];
     conflicts = [ "shutdown.target" ];
-    before = [ "shutdown.target" ]; #"sysinit.target" 
+    before = [ "sysinit.target" "shutdown.target" ];
     serviceConfig = {
       ExecStartPre = "${startPreScript}";
       ExecStart = "${falcon}/bin/fs-bash -c \"${falcon}/opt/CrowdStrike/falcond\"";
