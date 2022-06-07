@@ -73,6 +73,7 @@
             ./features/openvpn.nix
             ./features/beyond-identity.nix
             ./features/globalprotect.nix
+            ./features/falcon.nix
             ./features/google-cloud.nix
             ./features/poetry.nix
             ./features/python.nix
