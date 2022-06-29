@@ -25,6 +25,7 @@ rec {
     yubikey-personalization yubikey-manager-qt
     texlive.combined.scheme-full kile
     pciutils
+    imv
     #scrcpy
   ];
 
@@ -74,6 +75,7 @@ rec {
         EDITOR="vim";
         VISUAL="vim";
         BROWSER="firefox";
+        GTK_USE_PORTAL="1";
       };
       initExtra = ''
         bindkey "^[[1;5C" forward-word

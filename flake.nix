@@ -44,6 +44,8 @@
           ./features/java.nix
           ./features/retext.nix
           ./features/gnupg.nix
+          ./features/libvirt.nix
+          #./features/virtualbox.nix
 
           # home-manager configuration
           home-manager.nixosModules.home-manager
@@ -64,7 +66,6 @@
           [
             ./features/jetbrains/community/intellij.nix
             ./features/wireshark.nix
-            ./features/virtualbox.nix
             ./features/broadcom_sta.nix
           ];
         x1e3 = mkHomeMachine
@@ -86,7 +87,6 @@
             ./features/yamale.nix
             ./features/yamllint.nix
             ./features/kind.nix
-            ./features/virtualbox.nix
             #./features/zoom.nix
 
             ./features/jetbrains/enterprise/intellij.nix
