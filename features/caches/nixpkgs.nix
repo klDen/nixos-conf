@@ -1,8 +1,8 @@
 { pkgs, ... }: {
-  nix.binaryCachePublicKeys = [
+  nix.settings.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
   ];
-  nix.binaryCaches = [
+  nix.settings.substituters = [
     "https://cache.nixos.org"
   ];
 }
